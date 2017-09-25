@@ -89,7 +89,7 @@ $(document).ready(function(){
 
     // Add class 'hidden' to tweets that are not selected (so its added to none for 'ALL')
     for (let i = 0; i < tweets.length; i++ ) {
-      if (userNode.val() !== 'ALL' && tweets[i].children[0].children[1].innerText !== ('@' + userNode.val())) {
+      if (userNode.val() !== 'ALL' && tweets[i].children[0].children[0].innerText !== ('@' + userNode.val())) {
         tweets[i].classList.add('hidden');
       }
     }
