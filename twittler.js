@@ -1,3 +1,5 @@
+var filter = '';
+
 
 $(document).ready(function(){
   var $body = $('body');
@@ -7,8 +9,12 @@ $(document).ready(function(){
   var createNewTweet = function() {
     var tweet = streams.home[index];
     // CREATES NEW TWEET
-    var $tweet = $('<div class = "tweet"><div class = "profile"><img src=""><h5></h5></div><div class="tweetContent"><p class = "tweetBody"></p></div></div>');
-
+    let $tweet;
+    if (filter === '' || filter === tweet.user) {
+      $tweet = $('<div class = "tweet"><div class = "profile"><img src=""><h5></h5></div><div class="tweetContent"><p class = "tweetBody"></p></div></div>');
+    } else if (filter !== tweet.user) {
+      $tweet = $('<div class = "tweet hidden"><div class = "profile"><img src=""><h5></h5></div><div class="tweetContent"><p class = "tweetBody"></p></div></div>');
+    }
       // ADDS USERS NAME TO  RESPECTIVE ELEMENT
       //$tweet.text('@' + tweet.user + ': ' + tweet.message + '---' + tweet.created_at);
       $tweet.children('.profile').children('h5').text('@' + tweet.user)
@@ -47,6 +53,40 @@ $(document).ready(function(){
   // Calls displayNewTweets every second to keep the feed fresh
   setInterval(displayNewTweets, 1000);
 
+
+  // FOR WHEN THE USERBOX IS CHANGED
+  let userNode = $('#dropdown')
+  userNode.change(function() {
+    // Reassign filter variable 
+    if (userNode.val() !== 'ALL') {
+      filter = userNode.val();
+    } else {
+      filter = '';
+    }
+
+
+    // remove class 'hidden' from all tweets
+    let tweets = $('.tweet');
+    tweets.removeClass('hidden');
+
+    // Add class 'hidden' to tweets that are not selected (so its added to none for 'ALL')
+    for (let i = 0; i < tweets.length; i++ ) {
+      if (userNode.val() !== 'ALL' && tweets[i].children[0].children[1].innerText !== ('@' + userNode.val())) {
+        tweets[i].classList.add('hidden');
+      }
+    }
+
+  
+      // reassign name as filter variable
+
+   // } else {
+      // reassign '' as filter variable
+
+
+   // }
+      
+
+  })
 
 
 
