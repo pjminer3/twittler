@@ -71,7 +71,7 @@ End Hard Rest
 }
 
 
-
+/* hide tweets that aren't selected */
 .hidden {
   display: none;
 }
