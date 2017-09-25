@@ -7,16 +7,17 @@ $(document).ready(function(){
   var createNewTweet = function() {
     var tweet = streams.home[index];
     // CREATES NEW TWEET
-    var $tweet = $('<div class = "tweet"><div class = "profile"><img src="ADD IMAGE HERE"><h5> <!-- User name --/> </h5></div><div class="tweetContent"><p> <!-- body of tweet -/-> </p></div></div>');
+    var $tweet = $('<div class = "tweet"><div class = "profile"><img src=""><h5></h5></div><div class="tweetContent"><p class = "tweetBody"></p></div></div>');
 
       // ADDS USERS NAME TO  RESPECTIVE ELEMENT
-      $tweet.text('@' + tweet.user + ': ' + tweet.message + '---' + tweet.created_at);
+      //$tweet.text('@' + tweet.user + ': ' + tweet.message + '---' + tweet.created_at);
+      $tweet.children('.profile').children('h5').text('@' + tweet.user)
       
       // Add Tweet Content to proper element
-
+      $tweet.children('.tweetContent').children('p').text(tweet.message);
 
       // Add user image to proper element
-
+      $tweet.children('.profile').children('img').attr('src', '');
 
       $tweet.prependTo($('.tweetList'));  // ADD PROPER ELEMENT TO PREPEND IT 
   }
@@ -33,7 +34,7 @@ $(document).ready(function(){
   }
 
 
-  
+
 
   // Grabs new tweets that haven't been displayed yet and displays them in order, most recent at the top
   let displayNewTweets = function() {
@@ -43,9 +44,10 @@ $(document).ready(function(){
       createNewTweet();
     }
   };
-
   // Calls displayNewTweets every second to keep the feed fresh
   setInterval(displayNewTweets, 1000);
+
+
 
 
 
