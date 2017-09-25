@@ -55,6 +55,7 @@ border-spacing: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: sans-serif
 } 
 
 /*
@@ -93,6 +94,20 @@ h1, h3 {
 .userAside {
   float: left;
   width: 25%;
+  border: solid 2px grey;
+  padding: 10px 0 10px 0;
+}
+
+#userText {
+  text-align: center;
+  padding-bottom: 10px 5px 10px 5px;
+  font-family: sans-serif;
+}
+
+#dropdown {
+  text-align: center;
+  margin-left: 55px;
+
 }
 
 
@@ -103,19 +118,39 @@ h1, h3 {
 .tweetSection {
   float: right;
   width: 70%;
+  text-align: center;
+}
+
+.tweetSection h3 {
+  font-size: 40px;
+  text-align: left;
+}
+
+.tweet {
+  clear:both;
+  padding: 5px 0 5px 0;
 }
 
 .profile {
   text-align: center;
   float: left;
   width: 20%;
+  border: solid 1px grey;
+  border-radius: 80px;
+  margin-top: 23px;
 }
 
 .tweetContent {
   float: right;
-  width: 80%;
+  width: 75%;
+  text-align: left;
 }
 
-.tweet {
-  clear:both;
+.time {
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.tweetBody {
+  font-size:20px;
 }

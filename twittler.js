@@ -1,10 +1,30 @@
 var filter = '';
 
+var months = ['January', 
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
 
 $(document).ready(function(){
   var $body = $('body');
   //$body.html('');
 
+  var makeTwoDig = function(num) {
+    if (num.toString().length === 1) {
+      return '0' + num.toString();
+    } else {
+      return num.toString();
+    }
+  }
 
   var createNewTweet = function() {
     var tweet = streams.home[index];
@@ -12,19 +32,19 @@ $(document).ready(function(){
     let $tweet;
     // Creates new tweet w/ or w/o class 'hidden' depending on if user is selected or not
     if (filter === '' || filter === tweet.user) {
-      $tweet = $('<div class = "tweet"><div class = "profile"><img src=""><h5></h5></div><div class="tweetContent"><p class = "tweetBody"></p></div></div>');
+      $tweet = $('<div class = "tweet"><div class = "profile"><h5></h5></div><div class="tweetContent"><p class="time"></p><p class = "tweetBody"></p></div></div>');
     } else if (filter !== tweet.user) {
       // add 'hidden' class
-      $tweet = $('<div class = "tweet hidden"><div class = "profile"><img src=""><h5></h5></div><div class="tweetContent"><p class = "tweetBody"></p></div></div>');
+      $tweet = $('<div class = "tweet hidden"><div class = "profile"><h5></h5></div><div class="tweetContent"><p class="time"></p><p class="tweetBody"></p></div></div>');
     }
       // ADDS USERS NAME TO  RESPECTIVE ELEMENT
       $tweet.children('.profile').children('h5').text('@' + tweet.user)
       
       // Add Tweet Content to proper element
-      $tweet.children('.tweetContent').children('p').text(tweet.message);
+      $tweet.children('.tweetContent').children('.tweetBody').text(tweet.message);
 
-      // Add user image to proper element
-      $tweet.children('.profile').children('img').attr('src', '');
+      // Add Tweet Date/Time to proper element
+      $tweet.children('.tweetContent').children('.time').text(makeTwoDig(tweet.created_at.getHours()) + ':' + makeTwoDig(tweet.created_at.getMinutes()) + ' - ' + months[tweet.created_at.getMonth()] + ' ' + tweet.created_at.getDate() + ', ' + tweet.created_at.getFullYear()); // need to get proper month
 
       // ADD PROPER ELEMENT TO PREPEND IT 
       $tweet.prependTo($('.tweetList')); 
@@ -74,6 +94,8 @@ $(document).ready(function(){
       }
     }
   })
+
+
 
 
 
