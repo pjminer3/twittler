@@ -76,7 +76,7 @@ $(document).ready(function(){
     bindProfileToClick();    
   };
   // Calls displayNewTweets every second to keep the feed fresh
-  setInterval(displayNewTweets, 5000);
+  setInterval(displayNewTweets, 1000);
 
 
 
@@ -108,7 +108,6 @@ $(document).ready(function(){
 
 
   // ADD WHEN CLICKING A USER IT FILTERS RESULTS FOR THAT USER
-
   function bindProfileToClick() {
     $('.profile').on('click', function(){
       
