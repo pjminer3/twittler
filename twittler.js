@@ -73,7 +73,7 @@ $(document).ready(function(){
     }
   };
   // Calls displayNewTweets every second to keep the feed fresh
-  setInterval(displayNewTweets, 1000);
+  // setInterval(displayNewTweets, 1000);
 
 
 
@@ -102,6 +102,29 @@ $(document).ready(function(){
     tweets.removeClass('hidden');
     filter = '';
   })
+
+
+  // ADD WHEN CLICKING A USER IT FILTERS RESULTS FOR THAT USER
+  $('.profile').on('click', function(){
+    // set 'user' to the userName
+    let user = $(this)[0].childNodes[0].textContent.slice(1);
+    
+    // Set dropdown list to user
+    userNode.val(user);
+
+    // Unhide all tweets
+    let tweets = $('.tweet');
+    tweets.removeClass('hidden');
+
+    // Hide all unwanted tweets
+    for (let i = 0; i < tweets.length; i++ ) {
+      if (tweets[i].children[0].children[0].innerText !== ('@' + userNode.val())) {
+        tweets[i].classList.add('hidden');
+      }
+    }
+
+    filter = user;
+  });
 
 
 
