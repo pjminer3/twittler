@@ -95,6 +95,14 @@ $(document).ready(function(){
     }
   })
 
+  // Add when you click title it refreshes feed and brings back to all users
+  $('header h1').on('click', function() {
+    userNode.val('ALL');
+    let tweets = $('.tweet');
+    tweets.removeClass('hidden');
+    filter = '';
+  })
+
 
 
 
