@@ -18,6 +18,7 @@ $(document).ready(function(){
   var $body = $('body');
   //$body.html('');
 
+
   var makeTwoDig = function(num) {
     if (num.toString().length === 1) {
       return '0' + num.toString();
@@ -60,6 +61,7 @@ $(document).ready(function(){
     createNewTweet();
     index -= 1;
   }
+  bindProfileToClick();
 
 
 
@@ -71,9 +73,10 @@ $(document).ready(function(){
       index += 1;
       createNewTweet();
     }
+    bindProfileToClick();    
   };
   // Calls displayNewTweets every second to keep the feed fresh
-  // setInterval(displayNewTweets, 1000);
+  setInterval(displayNewTweets, 5000);
 
 
 
@@ -105,27 +108,34 @@ $(document).ready(function(){
 
 
   // ADD WHEN CLICKING A USER IT FILTERS RESULTS FOR THAT USER
-  $('.profile').on('click', function(){
-    // set 'user' to the userName
-    let user = $(this)[0].childNodes[0].textContent.slice(1);
-    
-    // Set dropdown list to user
-    userNode.val(user);
 
-    // Unhide all tweets
-    let tweets = $('.tweet');
-    tweets.removeClass('hidden');
-
-    // Hide all unwanted tweets
-    for (let i = 0; i < tweets.length; i++ ) {
-      if (tweets[i].children[0].children[0].innerText !== ('@' + userNode.val())) {
-        tweets[i].classList.add('hidden');
-      }
-    }
-
-    filter = user;
-  });
-
+  function bindProfileToClick() {
+    $('.profile').on('click', function(){
+      
+          // set 'user' to the userName
+          let user = $(this)[0].childNodes[0].textContent.slice(1);
+          
+          // Set dropdown list to user
+          userNode.val(user);
+          console.log(user);
+      
+          // Unhide all tweets
+          let tweets = $('.tweet');
+          tweets.removeClass('hidden');
+      
+          // Hide all unwanted tweets
+          for (let i = 0; i < tweets.length; i++ ) {
+            if (tweets[i].children[0].children[0].innerText !== ('@' + userNode.val())) {
+              tweets[i].classList.add('hidden');
+            }
+          }
+      
+          // Reset filter
+          filter = user;
+        });
+      
+  };
+  
 
 
 
