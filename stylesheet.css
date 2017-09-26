@@ -55,7 +55,7 @@ border-spacing: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-family: sans-serif
+  font-family: sans-serif;
 } 
 
 /*
@@ -71,6 +71,9 @@ End Hard Rest
   margin: 0 auto;
 }
 
+body {
+  background: aliceblue
+}
 
 /* hide tweets that aren't selected */
 .hidden {
@@ -85,6 +88,16 @@ header {
 
 h1, h3 {
   margin: 0 auto;
+}
+
+#title {
+  border: solid 1px white;
+  width: 50%;
+  border-radius:  50px;
+  padding: 20px 0;
+  font-size: 50px;
+  background: deepskyblue;
+  color: white;
 }
 
 
@@ -111,7 +124,16 @@ h1, h3 {
 }
 
 
+/* USER TWEET */
+.userTweet h5 {
+  font-size: 30px;
+  float: left;
+  color: deepskyblue;
+}
 
+.userInput {
+  float: left;
+}
 
 
 /* TWEET SECTION */
@@ -135,9 +157,10 @@ h1, h3 {
   text-align: center;
   float: left;
   width: 20%;
-  border: solid 1px grey;
+  border: solid 1px skyblue;
   border-radius: 80px;
   margin-top: 23px;
+  background: skyblue;
 }
 
 .tweetContent {
@@ -153,4 +176,5 @@ h1, h3 {
 
 .tweetBody {
   font-size:20px;
+  color: dimgrey;
 }
